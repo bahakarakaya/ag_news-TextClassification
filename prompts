@@ -1,0 +1,339 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ZERO-SHOT
+"""
+Classify the following news article into one of the following categories:
+World, Sports, Businesses, Sci/Tech
+
+Respond with ONLY the label, without any explanation or extra text.
+
+Article: "{text}"
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ZERO-SHOT Role
+"""
+You are a media analyst evaluating the topic and focus of news articles for content classification.
+Your task is to classify the following news article into one of the following categories:
+World, Sports, Businesses, Sci/Tech
+
+Respond with ONLY the label, and nothing else.
+
+Text: "{text}"
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ZERO-SHOT Justification
+"""
+Your task is to classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+First, write a concise one-sentence justification for your decision.
+Then, output ONLY the label, with no extra text or explanation.
+
+Article: "{text}"
+Justification:
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ZERO-SHOT Role + Justification
+"""
+You are a media analyst evaluating the topic and focus of news articles for content classification.
+Your task is to classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+First, write a concise one-sentence justification for your decision.
+Then, on the next line, output ONLY the correct label.
+Article: "{text}"
+Format your response exactly as shown below:
+
+Justification:
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ONE-SHOT
+"""
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Respond with ONLY the label, without any explanation or extra text.
+
+Example:
+Article: "Apple unveils new iPhone model with advanced AI capabilities."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ONE-SHOT Role (media analyst)
+"""
+You are a media analyst evaluating the topic and focus of news articles for content classification.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Respond with ONLY the label, without any explanation or extra text.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ONE-SHOT Justification
+"""
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+First, write a concise one-sentence justification
+Then, output ONLY the label on a new line.
+
+Follow this exact format:
+
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Justification: The article discusses advancements in mobile technology and digital media distribution, which relates to technological developments.
+Label: Sci/Tech
+
+Now classify this article using the same format:
+
+Article: "{text}"
+Justification:
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ONE-SHOT Role (media analyst) + Justification
+"""
+You are a media analyst evaluating the topic and focus of news articles for content classification.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+First, write a concise one-sentence justification
+Then, output ONLY the label on a new line.
+
+Follow this exact format:
+
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Justification: The article discusses advancements in mobile technology and digital media distribution, which relates to technological developments.
+Label: Sci/Tech
+
+Now classify this article using the same format:
+
+Article: "{text}"
+Justification:
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FEW-SHOT
+
+PROMPT_TEMPLATE = r"""
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Provide ONLY the label as the output, without any additional text.
+
+Here are few examples:
+```
+Text: Asteroid Toutatis Makes Closest Pass in 651 Years (Reuters) Reuters - An asteroid named for a Celtic god\of war will come as close to Earth this week as it has since\1353.
+Label: Sci/Tech
+
+Text: NATO proclaims victory in Bosnia SARAJEVO, Bosnia-Herzegovina -- When NATO forces first came to Bosnia nearly a decade ago, they lived in heavily guarded compounds, patrolled the streets in tanks, and often wore full body armor.
+Label: World
+
+Text: Google IPO: Type in 'confusing,' 'secrecy' I've submitted my bid to buy shares of Google Inc. in the computer search company's giant auction-style initial public offering. That could turn out to be the good news or the bad news.
+Label: Businesses
+
+Text: Hamilton Sets Early Pace as Woods Struggles KOHLER, Wis. (Reuters) - British Open champion Todd Hamilton made the first significant move in the U.S. PGA Championship final round Sunday as overnight pacesetter Vijay Singh prepared for an afternoon tee-off.
+Label: Sports
+```
+
+Classify this article:
+Text: {text}
+Label:"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FEW-SHOT Role (media analyst)
+"""
+You are a media analyst evaluating the topic and focus of news articles for content classification.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Provide ONLY the label as the output, without any additional text.
+
+Here are few examples:
+```
+Text: Asteroid Toutatis Makes Closest Pass in 651 Years (Reuters) Reuters - An asteroid named for a Celtic god\of war will come as close to Earth this week as it has since\1353.
+Label: Sci/Tech
+
+Text: NATO proclaims victory in Bosnia SARAJEVO, Bosnia-Herzegovina -- When NATO forces first came to Bosnia nearly a decade ago, they lived in heavily guarded compounds, patrolled the streets in tanks, and often wore full body armor.
+Label: World
+
+Text: Google IPO: Type in 'confusing,' 'secrecy' I've submitted my bid to buy shares of Google Inc. in the computer search company's giant auction-style initial public offering. That could turn out to be the good news or the bad news.
+Label: Businesses
+
+Text: Hamilton Sets Early Pace as Woods Struggles KOHLER, Wis. (Reuters) - British Open champion Todd Hamilton made the first significant move in the U.S. PGA Championship final round Sunday as overnight pacesetter Vijay Singh prepared for an afternoon tee-off.
+Label: Sports
+```
+
+Classify this article:
+Text: {text}
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FEW-SHOT Justification
+"""
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+First, write a concise one-sentence justification
+Then, output ONLY the label on a new line.
+
+Here are few examples, follow this exact format:
+```
+Text: Asteroid Toutatis Makes Closest Pass in 651 Years (Reuters) Reuters - An asteroid named for a Celtic god\of war will come as close to Earth this week as it has since\1353.
+Justification: The article covers a scientific event involving an asteroid's close approach to Earth, which relates to space and technology.
+Label: Sci/Tech
+
+Text: NATO proclaims victory in Bosnia SARAJEVO, Bosnia-Herzegovina -- When NATO forces first came to Bosnia nearly a decade ago, they lived in heavily guarded compounds, patrolled the streets in tanks, and often wore full body armor.
+Justification: The article discusses international military intervention and geopolitical developments involving NATO.
+Label: World
+
+Text: Google IPO: Type in 'confusing,' 'secrecy' I've submitted my bid to buy shares of Google Inc. in the computer search company's giant auction-style initial public offering. That could turn out to be the good news or the bad news.
+Justification: The article focuses on Google's financial actions and the process of its public stock offering, which is a business topic.
+Label: Businesses
+
+Text: Hamilton Sets Early Pace as Woods Struggles KOHLER, Wis. (Reuters) - British Open champion Todd Hamilton made the first significant move in the U.S. PGA Championship final round Sunday as overnight pacesetter Vijay Singh prepared for an afternoon tee-off.
+Justification: The article reports on the progress of professional golfers during a major sports tournament.
+Label: Sports
+```
+
+Now classify this article:
+Text: {text}
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FEW-SHOT Role (media analyst) + Justification
+"""
+You are a media analyst evaluating the topic and focus of news articles for content classification.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+First, write a concise one-sentence justification
+Then, output ONLY the label on a new line.
+
+Here are few examples, follow this exact format:
+```
+Text: Asteroid Toutatis Makes Closest Pass in 651 Years (Reuters) Reuters - An asteroid named for a Celtic god\of war will come as close to Earth this week as it has since\1353.
+Justification: The article covers a scientific event involving an asteroid's close approach to Earth, which relates to space and technology.
+Label: Sci/Tech
+
+Text: NATO proclaims victory in Bosnia SARAJEVO, Bosnia-Herzegovina -- When NATO forces first came to Bosnia nearly a decade ago, they lived in heavily guarded compounds, patrolled the streets in tanks, and often wore full body armor.
+Justification: The article discusses international military intervention and geopolitical developments involving NATO.
+Label: World
+
+Text: Google IPO: Type in 'confusing,' 'secrecy' I've submitted my bid to buy shares of Google Inc. in the computer search company's giant auction-style initial public offering. That could turn out to be the good news or the bad news.
+Justification: The article focuses on Google's financial actions and the process of its public stock offering, which is a business topic.
+Label: Businesses
+
+Text: Hamilton Sets Early Pace as Woods Struggles KOHLER, Wis. (Reuters) - British Open champion Todd Hamilton made the first significant move in the U.S. PGA Championship final round Sunday as overnight pacesetter Vijay Singh prepared for an afternoon tee-off.
+Justification: The article reports on the progress of professional golfers during a major sports tournament.
+Label: Sports
+```
+
+Now classify this article:
+Text: {text}
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ONE-SHOT Role (expert News Editor)
+"""
+You are an expert News Editor responsible for categorizing articles for a major news agency.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Respond with ONLY the label, without any explanation or extra text.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ONE-SHOT Role (meticulous Digital Archivist)
+"""
+You are a meticulous Digital Archivist whose primary function is to classify documents into predefined categories with perfect accuracy.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Respond with ONLY the label, without any explanation or extra text.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ONE-SHOT Role (Subject Matter Expert)
+"""
+You are a Subject Matter Expert in news analysis, with deep knowledge of world affairs, sports journalism, business markets, and technology trends.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Respond with ONLY the label, without any explanation or extra text.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ONE-SHOT Role (Data Scientist)
+"""
+You are a senior Data Scientist specializing in Natural Language Processing. Your task is to perform text classification based on semantic content.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Respond with ONLY the label, without any explanation or extra text.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ONE-SHOT Role (expert News Editor)
+"""
+You are a highly-calibrated text classification engine. Your sole function is to receive a text input and return one of four specific category labels: 'World', 'Sports', 'Business', or 'Sci/Tech'. You must return ONLY the label and nothing else.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+GOLDEN PROMPT
+"""
+# ROLE
+You are a highly-calibrated text classification engine. Your sole function is to classify a given news article into one of the following four categories: World, Sports, Businesses, Sci/Tech.
+
+# INSTRUCTIONS
+1.  Analyze the provided text to determine its primary subject.
+2.  Output ONLY the single most appropriate category label.
+3.  Do not add any explanations, introductory text, or punctuation. Your response must be a single word.
+
+### EXAMPLES ###
+
+Text: "The US stock market surged today after the Federal Reserve announced a pause in interest rate hikes. Tech stocks led the rally, with Apple and Microsoft reaching new all-time highs."
+Label: Businesses
+
+Text: "Real Madrid secured a dramatic last-minute victory over Barcelona in the El Clásico, with a stunning free-kick from their star striker in the 92nd minute."
+Label: Sports
+
+### TASK ###
+
+Text:
+---
+{text}
+---
+Label:
+"""

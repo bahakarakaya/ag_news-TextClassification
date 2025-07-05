@@ -1,0 +1,615 @@
+-----------------------TEST_1-----------------------
+
+Prompt: Classify the following news article into one of the following categories:
+World, Sports, Businesses, Sci/Tech
+
+Respond with ONLY the label, without any explanation or extra text.
+
+Article: "{text}"
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 94.66
+Average output tokens generated per inference: 1.22
+Average total tokens used per inference: 95.88
+
+--EVALUATION METRICS--
+Accuracy: 0.82
+Precision: 0.8734570661896243
+Recall: 0.8210901417423156
+F1 Score: 0.8103252136949812
+
+--CONFUSION MATRIX--
+[[0.9047619  0.04761905 0.04761905 0.        ]
+ [0.         0.95652174 0.04347826 0.        ]
+ [0.         0.         1.         0.        ]
+ [0.03846154 0.11538462 0.42307692 0.42307692]]
+
+-----------------------TEST_2-----------------------
+
+Prompt: You are a media analyst evaluating the topic and focus of news articles for content classification.
+Your task is to classify the following news article into one of the following categories:
+World, Sports, Businesses, Sci/Tech
+
+Respond with ONLY the label, and nothing else.
+
+Text: "{text}"
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 113.66
+Average output tokens generated per inference: 1.32
+Average total tokens used per inference: 114.98
+
+--EVALUATION METRICS--
+Accuracy: 0.89
+Precision: 0.9154636591478698
+Recall: 0.891941391941392
+F1 Score: 0.8887429971988795
+
+--CONFUSION MATRIX--
+[[0.95238095 0.04761905 0.         0.        ]
+ [0.         1.         0.         0.        ]
+ [0.         0.         1.         0.        ]
+ [0.03846154 0.03846154 0.30769231 0.61538462]]
+
+-----------------------TEST_3-----------------------
+
+Prompt: Your task is to classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+First, write a concise one-sentence justification for your decision.
+Then, on the next line, output ONLY the correct label.
+Article: "{text}" 
+Format your response exactly as shown below:
+
+Justification:
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 124.66
+Average output tokens generated per inference: 31.56
+Average total tokens used per inference: 156.22
+
+--EVALUATION METRICS--
+Accuracy: 0.86
+Precision: 0.8995934959349594
+Recall: 0.8595516802038541
+F1 Score: 0.8599443051667555
+
+--CONFUSION MATRIX--
+[[0.9047619  0.04761905 0.04761905 0.        ]
+ [0.         0.95652174 0.04347826 0.        ]
+ [0.         0.         1.         0.        ]
+ [0.03846154 0.03846154 0.34615385 0.57692308]]
+
+-----------------------TEST_4-----------------------
+
+Prompt: You are a media analyst evaluating the topic and focus of news articles for content classification.
+Your task is to classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+First, write a concise one-sentence justification for your decision.
+Then, on the next line, output ONLY the correct label.
+Article: "{text}" 
+Format your response exactly as shown below:
+
+Justification:
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 142.66
+Average output tokens generated per inference: 32.19
+Average total tokens used per inference: 174.85
+
+--EVALUATION METRICS--
+Accuracy: 0.88
+Precision: 0.9098076923076923
+Recall: 0.88003663003663
+F1 Score: 0.8791581452305206
+
+--CONFUSION MATRIX--
+[[0.9047619  0.04761905 0.04761905 0.        ]
+ [0.         1.         0.         0.        ]
+ [0.         0.         1.         0.        ]
+ [0.03846154 0.03846154 0.30769231 0.61538462]]
+
+-----------------------TEST_5-----------------------
+
+Prompt: Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Respond with ONLY the label, without any explanation or extra text.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 146.66
+Average output tokens generated per inference: 1.28
+Average total tokens used per inference: 147.94
+
+--EVALUATION METRICS--
+Accuracy: 0.84
+Precision: 0.8635149572649572
+Recall: 0.844139194139194
+F1 Score: 0.8329262007833436
+
+--CONFUSION MATRIX--
+[[0.9047619  0.04761905 0.04761905 0.        ]
+ [0.         1.         0.         0.        ]
+ [0.06666667 0.         0.93333333 0.        ]
+ [0.11538462 0.07692308 0.26923077 0.53846154]]
+
+-----------------------TEST_6-----------------------
+
+Prompt: You are a media analyst evaluating the topic and focus of news articles for content classification.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Respond with ONLY the label, without any explanation or extra text.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 164.66
+Average output tokens generated per inference: 1.3
+Average total tokens used per inference: 165.96
+
+--EVALUATION METRICS--
+Accuracy: 0.85
+Precision: 0.8723611111111111
+Recall: 0.8537545787545786
+F1 Score: 0.8457424858339493
+
+--CONFUSION MATRIX--
+[[0.9047619  0.04761905 0.04761905 0.        ]
+ [0.         1.         0.         0.        ]
+ [0.06666667 0.         0.93333333 0.        ]
+ [0.11538462 0.03846154 0.26923077 0.57692308]]
+
+-----------------------TEST_7-----------------------
+
+Prompt: Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+First, write a concise one-sentence justification
+Then, output ONLY the label on a new line.
+
+Follow this exact format:
+
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Justification: The article discusses advancements in mobile technology and digital media distribution, which relates to technological developments.
+Label: Sci/Tech
+
+Now classify this article using the same format:
+
+Article: "{text}"
+Justification:
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 185.66
+Average output tokens generated per inference: 28.46
+Average total tokens used per inference: 214.12
+
+--EVALUATION METRICS--
+Accuracy: 0.89
+Precision: 0.9055694305694306
+Recall: 0.8932234432234432
+F1 Score: 0.8880033587674784
+
+--CONFUSION MATRIX--
+[[0.95238095 0.04761905 0.         0.        ]
+ [0.         1.         0.         0.        ]
+ [0.03333333 0.         0.96666667 0.        ]
+ [0.03846154 0.07692308 0.23076923 0.65384615]]
+
+-----------------------TEST_8-----------------------
+
+Prompt: You are a media analyst evaluating the topic and focus of news articles for content classification.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+First, write a concise one-sentence justification
+Then, output ONLY the label on a new line.
+
+Follow this exact format:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Justification: The article discusses advancements in mobile technology and digital media distribution, which relates to technological developments.
+Label: Sci/Tech
+
+Now classify this article using exactly the same format:
+Article: "{text}"
+Justification:
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 204.66
+Average output tokens generated per inference: 28.62
+Average total tokens used per inference: 233.28
+
+--EVALUATION METRICS--
+Accuracy: 0.84
+Precision: 0.87027665317139
+Recall: 0.8451465201465201
+F1 Score: 0.8280461307329949
+
+--CONFUSION MATRIX--
+[[0.95238095 0.04761905 0.         0.        ]
+ [0.         1.         0.         0.        ]
+ [0.03333333 0.         0.96666667 0.        ]
+ [0.11538462 0.07692308 0.34615385 0.46153846]]
+
+-----------------------TEST_9-----------------------
+
+Prompt: Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Provide ONLY the label as the output, without any additional text.
+
+Here are few examples:
+```
+Text: Asteroid Toutatis Makes Closest Pass in 651 Years (Reuters) Reuters - An asteroid named for a Celtic god\of war will come as close to Earth this week as it has since\1353.
+Label: Sci/Tech
+
+Text: NATO proclaims victory in Bosnia SARAJEVO, Bosnia-Herzegovina -- When NATO forces first came to Bosnia nearly a decade ago, they lived in heavily guarded compounds, patrolled the streets in tanks, and often wore full body armor.
+Label: World
+
+Text: Google IPO: Type in 'confusing,' 'secrecy' I've submitted my bid to buy shares of Google Inc. in the computer search company's giant auction-style initial public offering. That could turn out to be the good news or the bad news.
+Label: Businesses
+
+Text: Hamilton Sets Early Pace as Woods Struggles KOHLER, Wis. (Reuters) - British Open champion Todd Hamilton made the first significant move in the U.S. PGA Championship final round Sunday as overnight pacesetter Vijay Singh prepared for an afternoon tee-off.
+Label: Sports
+```
+
+Classify this article:
+Text: {text}
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 337.49
+Average output tokens generated per inference: 1.36
+Average total tokens used per inference: 338.85
+
+--EVALUATION METRICS--
+Accuracy: 0.86
+Precision: 0.8842649467649468
+Recall: 0.8621157827679568
+F1 Score: 0.8616024282348771
+
+--CONFUSION MATRIX--
+[[0.9047619  0.04761905 0.04761905 0.        ]
+ [0.         0.95652174 0.04347826 0.        ]
+ [0.06666667 0.         0.93333333 0.        ]
+ [0.03846154 0.03846154 0.26923077 0.65384615]]
+
+-----------------------TEST_10-----------------------
+
+Prompt: You are a media analyst evaluating the topic and focus of news articles for content classification.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Provide ONLY the label as the output, without any additional text.
+
+Here are few examples:
+```
+Text: Asteroid Toutatis Makes Closest Pass in 651 Years (Reuters) Reuters - An asteroid named for a Celtic god\of war will come as close to Earth this week as it has since\1353.
+Label: Sci/Tech
+
+Text: NATO proclaims victory in Bosnia SARAJEVO, Bosnia-Herzegovina -- When NATO forces first came to Bosnia nearly a decade ago, they lived in heavily guarded compounds, patrolled the streets in tanks, and often wore full body armor.
+Label: World
+
+Text: Google IPO: Type in 'confusing,' 'secrecy' I've submitted my bid to buy shares of Google Inc. in the computer search company's giant auction-style initial public offering. That could turn out to be the good news or the bad news.
+Label: Businesses
+
+Text: Hamilton Sets Early Pace as Woods Struggles KOHLER, Wis. (Reuters) - British Open champion Todd Hamilton made the first significant move in the U.S. PGA Championship final round Sunday as overnight pacesetter Vijay Singh prepared for an afternoon tee-off.
+Label: Sports
+```
+
+Classify this article:
+Text: {text}
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 355.49
+Average output tokens generated per inference: 1.35
+Average total tokens used per inference: 356.84
+
+--EVALUATION METRICS--
+Accuracy: 0.87
+Precision: 0.8910024154589372
+Recall: 0.8740205446727186
+F1 Score: 0.87111091119008
+
+--CONFUSION MATRIX--
+[[0.95238095 0.04761905 0.         0.        ]
+ [0.         0.95652174 0.04347826 0.        ]
+ [0.06666667 0.         0.93333333 0.        ]
+ [0.03846154 0.03846154 0.26923077 0.65384615]]
+
+-----------------------TEST_11-----------------------
+
+Prompt: Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+First, write a concise one-sentence justification
+Then, output ONLY the label on a new line.
+
+Here are few examples, follow this exact format:
+```
+Text: Asteroid Toutatis Makes Closest Pass in 651 Years (Reuters) Reuters - An asteroid named for a Celtic god\of war will come as close to Earth this week as it has since\1353.
+Justification: The article covers a scientific event involving an asteroid's close approach to Earth, which relates to space and technology.
+Label: Sci/Tech
+
+Text: NATO proclaims victory in Bosnia SARAJEVO, Bosnia-Herzegovina -- When NATO forces first came to Bosnia nearly a decade ago, they lived in heavily guarded compounds, patrolled the streets in tanks, and often wore full body armor.
+Justification: The article discusses international military intervention and geopolitical developments involving NATO.
+Label: World
+
+Text: Google IPO: Type in 'confusing,' 'secrecy' I've submitted my bid to buy shares of Google Inc. in the computer search company's giant auction-style initial public offering. That could turn out to be the good news or the bad news.
+Justification: The article focuses on Google's financial actions and the process of its public stock offering, which is a business topic.
+Label: Businesses
+
+Text: Hamilton Sets Early Pace as Woods Struggles KOHLER, Wis. (Reuters) - British Open champion Todd Hamilton made the first significant move in the U.S. PGA Championship final round Sunday as overnight pacesetter Vijay Singh prepared for an afternoon tee-off.
+Justification: The article reports on the progress of professional golfers during a major sports tournament.
+Label: Sports
+```
+
+Now classify this article:
+Text: {text}
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 437.49
+Average output tokens generated per inference: 30.8
+Average total tokens used per inference: 468.29
+
+--EVALUATION METRICS--
+Accuracy: 0.91
+Precision: 0.9205080213903744
+Recall: 0.9124542124542124
+F1 Score: 0.9098150839793282
+
+--CONFUSION MATRIX--
+[[0.95238095 0.04761905 0.         0.        ]
+ [0.         1.         0.         0.        ]
+ [0.03333333 0.         0.96666667 0.        ]
+ [0.03846154 0.03846154 0.19230769 0.73076923]]
+
+-----------------------TEST_12-----------------------
+
+Prompt: You are a media analyst evaluating the topic and focus of news articles for content classification.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+First, write a concise one-sentence justification
+Then, output ONLY the label on a new line.
+
+Here are few examples, follow this exact format:
+```
+Text: Asteroid Toutatis Makes Closest Pass in 651 Years (Reuters) Reuters - An asteroid named for a Celtic god\of war will come as close to Earth this week as it has since\1353.
+Justification: The article covers a scientific event involving an asteroid's close approach to Earth, which relates to space and technology.
+Label: Sci/Tech
+
+Text: NATO proclaims victory in Bosnia SARAJEVO, Bosnia-Herzegovina -- When NATO forces first came to Bosnia nearly a decade ago, they lived in heavily guarded compounds, patrolled the streets in tanks, and often wore full body armor.
+Justification: The article discusses international military intervention and geopolitical developments involving NATO.
+Label: World
+
+Text: Google IPO: Type in 'confusing,' 'secrecy' I've submitted my bid to buy shares of Google Inc. in the computer search company's giant auction-style initial public offering. That could turn out to be the good news or the bad news.
+Justification: The article focuses on Google's financial actions and the process of its public stock offering, which is a business topic.
+Label: Businesses
+
+Text: Hamilton Sets Early Pace as Woods Struggles KOHLER, Wis. (Reuters) - British Open champion Todd Hamilton made the first significant move in the U.S. PGA Championship final round Sunday as overnight pacesetter Vijay Singh prepared for an afternoon tee-off.
+Justification: The article reports on the progress of professional golfers during a major sports tournament.
+Label: Sports
+```
+
+Now classify this article:
+Text: {text}
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 455.49
+Average output tokens generated per inference: 31.07
+Average total tokens used per inference: 486.56
+
+--EVALUATION METRICS--
+Accuracy: 0.93
+Precision: 0.9434523809523809
+Recall: 0.9291487498009237
+F1 Score: 0.9321184783042593
+
+--CONFUSION MATRIX--
+[[0.95238095 0.04761905 0.         0.        ]
+ [0.         0.95652174 0.04347826 0.        ]
+ [0.         0.         1.         0.        ]
+ [0.         0.03846154 0.15384615 0.80769231]]
+
+-----------------------TEST_13-----------------------
+
+Prompt: You are an expert News Editor responsible for categorizing articles for a major news agency.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Respond with ONLY the label, without any explanation or extra text.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 164.66
+Average output tokens generated per inference: 1.28
+Average total tokens used per inference: 165.94
+
+--EVALUATION METRICS--
+Accuracy: 0.84
+Precision: 0.8668647744734701
+Recall: 0.844139194139194
+F1 Score: 0.8345581923407084
+
+--CONFUSION MATRIX--
+[[0.9047619  0.04761905 0.04761905 0.        ]
+ [0.         1.         0.         0.        ]
+ [0.06666667 0.         0.93333333 0.        ]
+ [0.07692308 0.07692308 0.30769231 0.53846154]]
+
+-----------------------TEST_14-----------------------
+
+Prompt: You are a meticulous Digital Archivist whose primary function is to classify documents into predefined categories with perfect accuracy.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Respond with ONLY the label, without any explanation or extra text.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 168.66
+Average output tokens generated per inference: 1.34
+Average total tokens used per inference: 170.0
+
+--EVALUATION METRICS--
+Accuracy: 0.84
+Precision: 0.855234593837535
+Recall: 0.8441670648192388
+F1 Score: 0.8388924836228152
+
+--CONFUSION MATRIX--
+[[0.9047619  0.04761905 0.04761905 0.        ]
+ [0.         0.95652174 0.04347826 0.        ]
+ [0.06666667 0.         0.9        0.03333333]
+ [0.11538462 0.03846154 0.23076923 0.61538462]]
+
+-----------------------TEST_15-----------------------
+
+Prompt: You are a Subject Matter Expert in news analysis, with deep knowledge of world affairs, sports journalism, business markets, and technology trends.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Respond with ONLY the label, without any explanation or extra text.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 174.66
+Average output tokens generated per inference: 1.3
+Average total tokens used per inference: 175.96
+
+--EVALUATION METRICS--
+Accuracy: 0.84
+Precision: 0.8513403263403263
+Recall: 0.8477106227106227
+F1 Score: 0.8324772566006164
+
+--CONFUSION MATRIX--
+[[0.95238095 0.04761905 0.         0.        ]
+ [0.         1.         0.         0.        ]
+ [0.06666667 0.         0.9        0.03333333]
+ [0.15384615 0.07692308 0.23076923 0.53846154]]
+
+-----------------------TEST_16-----------------------
+
+Prompt: You are a senior Data Scientist specializing in Natural Language Processing. Your task is to perform text classification based on semantic content.
+Classify the following news article into one of the following categories: World, Sports, Businesses, Sci/Tech
+Respond with ONLY the label, without any explanation or extra text.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 171.66
+Average output tokens generated per inference: 2.02
+Average total tokens used per inference: 173.68
+
+--EVALUATION METRICS--
+Accuracy: 0.86
+Precision: 0.8776652682902683
+Recall: 0.8620879120879121
+F1 Score: 0.8558736927606864
+
+--CONFUSION MATRIX--
+[[0.9047619  0.04761905 0.04761905 0.        ]
+ [0.         1.         0.         0.        ]
+ [0.         0.         0.96666667 0.03333333]
+ [0.07692308 0.07692308 0.26923077 0.57692308]]
+
+-----------------------TEST_17-----------------------
+
+Prompt: You are a highly-calibrated text classification engine. Your sole function is to receive a text input and return one of four specific category labels: 'World', 'Sports', 'Businesses', 'Sci/Tech'.
+You must return ONLY the label and nothing else.
+
+Example:
+Article: "European Download Services Go Mobile (Reuters) Reuters - The ability to download complete\tracks directly over cell-phone networks to mobile phones is\becoming a reality in Europe."
+Label: Sci/Tech
+
+Now classify this article:
+Article: "{text}"
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 165.66
+Average output tokens generated per inference: 1.39
+Average total tokens used per inference: 167.05
+
+--EVALUATION METRICS--
+Accuracy: 0.86
+Precision: 0.8647514042022052
+Recall: 0.8646520146520146
+F1 Score: 0.8586670274170274
+
+--CONFUSION MATRIX--
+[[0.9047619  0.04761905 0.         0.04761905]
+ [0.         1.         0.         0.        ]
+ [0.06666667 0.         0.9        0.03333333]
+ [0.07692308 0.03846154 0.23076923 0.65384615]]
+
+-----------------------TEST_18-----------------------
+
+Prompt: # ROLE
+You are a highly-calibrated text classification engine. Your sole function is to classify a given news article into one of the following four categories: World, Sports, Businesses, Sci/Tech.
+
+# INSTRUCTIONS
+1.  Analyze the provided text to determine its primary subject.
+2.  Output ONLY the single most appropriate category label.
+3.  Do not add any explanations, introductory text, or punctuation. Your response must be a single word.
+
+### EXAMPLES ###
+
+Text: "The US stock market surged today after the Federal Reserve announced a pause in interest rate hikes. Tech stocks led the rally, with Apple and Microsoft reaching new all-time highs."
+Label: Businesses
+
+Text: "Real Madrid secured a dramatic last-minute victory over Barcelona in the El Cl�sico, with a stunning free-kick from their star striker in the 92nd minute."
+Label: Sports
+
+### TASK ###
+
+Text:
+---
+{text}
+---
+Label:
+
+--TOKEN USAGE--
+Average input tokens used per inference: 252.65
+Average output tokens generated per inference: 1.34
+Average total tokens used per inference: 253.99
+
+--EVALUATION METRICS--
+Accuracy: 0.85
+Precision: 0.8656512605042017
+Recall: 0.8560718267240006
+F1 Score: 0.8500035947339263
+
+--CONFUSION MATRIX--
+[[0.95238095 0.04761905 0.         0.        ]
+ [0.         0.95652174 0.04347826 0.        ]
+ [0.06666667 0.         0.9        0.03333333]
+ [0.07692308 0.03846154 0.26923077 0.61538462]]
+
