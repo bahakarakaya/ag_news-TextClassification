@@ -7,7 +7,10 @@
 Bu çalışmada amaç AG News veri setindeki haber başlıklarını, çeşitli istem teknikleri kullanarak dört sınıfa (World, Sports, Businesses, Sci/Tech) doğru bir şekilde sınıflandırabilecek etkili istemler tasarlamaktır. Sınıflandırma başarımının yanında, kullanılan token sayısı da dikkate alınarak istemlerin **doğruluk-verimlilik dengesi** değerlendirilmiştir.
   
 * Model olarak  **Gemma 12B** tercih edilmiştir. Bu parametre sayısına sahip bir model seçilmesinin nedeni farklı istem stratejilerinin sonuca etkisini daha net görebilmektir.  
-* Her test için tutarlı sonuçlar elde etmek adına haber seçiminde seed belirlenmiş (42), temperature 0.0 olarak ayarlanmıştır. Bu sayede modelin çıktıları tutarlı ve tekrarlanabilir olmuştur.
+* Testler, **100** haber makalesi üzerinde gerçekleştirilmiştir. Her test için tutarlı sonuçlar elde etmek adına haber seçiminde **seed 42** belirlenmiş, **temperature 0.0** olarak ayarlanmıştır. Bu sayede modelin çıktıları tutarlı ve tekrarlanabilir olmuştur.
+
+**Token Sayımı:**
+Her sınıflandırmada kullanılan token sayıları, Gemini API’nin usage_metadata bilgisiyle ölçülmüştür. Girdi token sayısı prompt_token_count üzerinden alınmış, modelin ürettiği yanıt ise count_tokens() fonksiyonuyla analiz edilerek çıktı token sayısı hesaplanmıştır.
 
 Aşağıda sunulan istemler farklı stratejilere göre tasarlanmış ve her birinden elde edilen test metrikleri classification_report.txt dosyasında detaylı haliyle sunulmuştur.
 
@@ -16,7 +19,7 @@ Aşağıda sunulan istemler farklı stratejilere göre tasarlanmış ve her biri
 ## Değerlendirilecek İstemler  
 
 ### İstem 1 (Test 2): "Zero-Shot + Media Analyst Rolü"
-Bu istem en sade istemlerden biridir. Modelin rolünü kavraması için Media Analyst rolü tanımlanmıştır.  
+Bu istem en sade istemlerden biridir. Modelin rolünü kavraması için Media Analyst rolü tanımlanmıştır. "Sports" ve "World" kategorilerinde yüksek başarı gösterse de, "Sci/Tech" ve "Businesses" arasında karışıklık yaşamaktadır. 
 **Yüksek Doğrulukta ve ekonomik sınıflandırma için uygundur.**
 
 ```
@@ -84,32 +87,41 @@ Label:
 
 ---
 
-| Test # | Strateji                        | Accuracy | F1 Score | Toplam Jeton | Notlar                                            |
-|--------|---------------------------------|----------|----------|---------------|---------------------------------------------------|
-| 12     | Rol + Few-Shot + Gerekçe (CoT)  | %93      | 0.932    | 486.56        | **En Yüksek Performans**. En pahalı istem.        |
-| 11     | Few-Shot + Gerekçe (CoT)        | %91      | 0.910    | 468.29        | Rol atama olmadan da çok yüksek performans.       |
-| 2      | Rol + Zero-Shot                 | %89      | 0.889    | 114.98        | **En İyi Fiyat/Performans**. Çok verimli.         |
-| 7      | One-Shot + Gerekçe (CoT)        | %89      | 0.888    | 214.12        | Gerekçe eklemek doğruluğu artırıyor.              |
-| 4      | Rol + Gerekçe (CoT)             | %88      | 0.879    | 174.85        | Örnek olmadan bile CoT etkili.                    |
-| 10     | Rol + Few-Shot                  | %87      | 0.871    | 356.84        | Çoklu örnekler tek başına CoT kadar etkili değil. |
-| 16     | Rol (Data Scientist) + One-Shot | %86      | 0.856    | 173.68        | Rolün spesifikliği performansı çok değiştirmiyor. |
-| 9      | Few-Shot                        | %86      | 0.862    | 338.85        | Gerekçe veya rol olmadan daha az etkili.          |
-| 3      | Gerekçe (CoT)                   | %86      | 0.860    | 156.22        | En basit CoT istemi, temel performansı artırıyor. |
-| 17     | Rol (Engine) + One-Shot         | %86      | 0.859    | 167.05        | "Motor" rolü, "analist" kadar etkili değil.       |
-| 18     | Rol (Engine) + MD + Few-Shot    | %85      | 0.850    | 253.99        | Yapısal Markdown formatı ekstra fayda sağlamadı.  |
-| 6      | Rol + One-Shot                  | %85      | 0.846    | 165.96        | Tek örnek, rol atamalı zero-shot'tan daha kötü.   |
-| 15     | Rol (SME) + One-Shot            | %84      | 0.832    | 175.96        | Farklı roller benzer sonuçlar veriyor.            |
-| 14     | Rol (Archivist) + One-Shot      | %84      | 0.839    | 170.00        | Farklı roller benzer sonuçlar veriyor.            |
-| 13     | Rol (Editor) + One-Shot         | %84      | 0.835    | 165.94        | Farklı roller benzer sonuçlar veriyor.            |
-| 5      | One-Shot                        | %84      | 0.833    | 147.94        | En basit few-shot, zero-shot'tan biraz daha iyi.  |
-| 8      | Rol + One-Shot + Gerekçe (CoT)  | %84      | 0.828    | 233.28        | Beklenmedik düşük performans, belki kötü örnek.   |
-| 1      | Temel İstem (Zero-Shot)         | %82      | 0.810    | 95.88         | **Referans Noktası**. En düşük performans.        |
+| Test # | Strateji                        | Doğruluk | F1 Score | Toplam Token | Doğruluk / Token | Notlar                                            |
+|--------|---------------------------------|----------|----------|--------------|------------------|---------------------------------------------------|
+| 12     | Rol + Few-Shot + Gerekçe (CoT)  | %93      | 0.932    | 486.56       | 0.00191          | **En Yüksek Performans**. En pahalı istem.        |
+| 11     | Few-Shot + Gerekçe (CoT)        | %91      | 0.910    | 468.29       | 0.00194          | Rol atama olmadan da çok yüksek performans.       |
+| 2      | Rol + Zero-Shot                 | %89      | 0.889    | 114.98       | 0.00774          | **En İyi Fiyat/Performans**. Çok verimli.         |
+| 7      | One-Shot + Gerekçe (CoT)        | %89      | 0.888    | 214.12       | 0.00416          | Gerekçe eklemek doğruluğu artırıyor.              |
+| 4      | Rol + Gerekçe (CoT)             | %88      | 0.879    | 174.85       | 0.00503          | Örnek olmadan bile CoT etkili.                    |
+| 10     | Rol + Few-Shot                  | %87      | 0.871    | 356.84       | 0.00244          | Çoklu örnekler tek başına CoT kadar etkili değil. |
+| 16     | Rol (Data Scientist) + One-Shot | %86      | 0.856    | 173.68       | 0.00495          | Rolün spesifikliği performansı çok değiştirmiyor. |
+| 9      | Few-Shot                        | %86      | 0.862    | 338.85       | 0.00254          | Gerekçe veya rol olmadan daha az etkili.          |
+| 3      | Gerekçe (CoT)                   | %86      | 0.860    | 156.22       | 0.00550          | En basit CoT istemi, temel performansı artırıyor. |
+| 17     | Rol (Engine) + One-Shot         | %86      | 0.859    | 167.05       | 0.00515          | "Motor" rolü, "analist" kadar etkili değil.       |
+| 18     | Rol (Engine) + MD + Few-Shot    | %85      | 0.850    | 253.99       | 0.00335          | Yapısal Markdown formatı ekstra fayda sağlamadı.  |
+| 6      | Rol + One-Shot                  | %85      | 0.846    | 165.96       | 0.00512          | Tek örnek, rol atamalı zero-shot'tan daha kötü.   |
+| 15     | Rol (SME) + One-Shot            | %84      | 0.832    | 175.96       | 0.00477          | Farklı roller benzer sonuçlar veriyor.            |
+| 14     | Rol (Archivist) + One-Shot      | %84      | 0.839    | 170.00       | 0.00494          | Farklı roller benzer sonuçlar veriyor.            |
+| 13     | Rol (Editor) + One-Shot         | %84      | 0.835    | 165.94       | 0.00506          | Farklı roller benzer sonuçlar veriyor.            |
+| 5      | One-Shot                        | %84      | 0.833    | 147.94       | 0.00568          | En basit few-shot, zero-shot'tan biraz daha iyi.  |
+| 8      | Rol + One-Shot + Gerekçe (CoT)  | %84      | 0.828    | 233.28       | 0.00360          | Beklenmedik düşük performans, belki kötü örnek.   |
+| 1      | Temel İstem (Zero-Shot)         | %82      | 0.810    | 95.88        | 0.00855          | **Referans Noktası**. En düşük performans.        |
+
+### Doğruluk / Token Verimlilik Grafiği
+
+![](./token_verimi.png)
+*Grafikte her istemin toplam doğruluğunun token maliyetine oranı gösterilmektedir.*
 
 ## Sonuçlar ve Değerlendirme
 
-* **Maksimum Doğruluk için (Yüksek Maliyetli):**  
-**İstem 12** kullanılmalıdır. İstemde tanımlanan rol, çoklu örnek stratejisi ve modelin nihai cevabını vermeden önce kararını rasyonalize etmesi, 487 ortalama token kullanımı ile %93 doğruluk sağlamıştır.
+* #### **Maksimum Doğruluk için (Yüksek Maliyetli):**
+  **İstem 12** kullanılmalıdır. İstemde tanımlanan rol, çoklu örnek stratejisi ve modelin nihai cevabını vermeden önce kararını rasyonalize etmesi, 487 ortalama token kullanımı ile %93 doğruluk sağlamıştır.
 
 
-* **Maliyet-Etkin Dengeli Çözüm:**
-**İstem 2** kullanılmalıdır. Sadece bir rol ekleyerek elde edilen %89 doğruluk, 115 tokenlik ortalama maliyetiyle mükemmel bir fiyat/performans oranı sunmaktadır. Birçok uygulama için yeterlidir.
+* ### **Maliyet-Etkin Dengeli Çözüm:**  
+  **İstem 2** kullanılmalıdır. Sadece bir rol ekleyerek elde edilen %89 doğruluk, 115 tokenlik ortalama maliyetiyle mükemmel bir fiyat/performans oranı sunmaktadır. Birçok uygulama için yeterlidir.  
+
+
+* ### **Hibrit Çözüm:**  
+  **İstem 2** ve **İstem 12** birlikte kullanılmalıdır. Eğer tahmin edilen kategori "Sci/Tech" veya "Businesses" ise ilgili makale İstem 12 ile tekrar sınıflandırmaya sokulur. İki kategoriden birine sınıflandırması istenir.

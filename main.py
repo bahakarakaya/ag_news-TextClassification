@@ -14,7 +14,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 ds = load_dataset("fancyzhx/ag_news")
 
-random.seed(42)       # Her seferinde aynı verilerin seçildiğinen emin olmak için
+random.seed(42)
 
 inference_count = 100
 
