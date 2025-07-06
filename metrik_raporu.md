@@ -6,11 +6,17 @@
 ---
 Bu çalışmada amaç AG News veri setindeki haber başlıklarını, çeşitli istem teknikleri kullanarak dört sınıfa (World, Sports, Businesses, Sci/Tech) doğru bir şekilde sınıflandırabilecek etkili istemler tasarlamaktır. Sınıflandırma başarımının yanında, kullanılan token sayısı da dikkate alınarak istemlerin **doğruluk-verimlilik dengesi** değerlendirilmiştir.
   
-* Model olarak  **Gemma 12B** tercih edilmiştir. Bu parametre sayısına sahip bir model seçilmesinin nedeni farklı istem stratejilerinin sonuca etkisini daha net görebilmektir.  
-* Testler, **100** haber makalesi üzerinde gerçekleştirilmiştir. Her test için tutarlı sonuçlar elde etmek adına haber seçiminde **seed 42** belirlenmiş, **temperature 0.0** olarak ayarlanmıştır. Bu sayede modelin çıktıları tutarlı ve tekrarlanabilir olmuştur.
+>* Model olarak  **Gemma 12B** tercih edilmiştir. Bu parametre sayısına sahip bir model seçilmesinin nedeni farklı istem stratejilerinin sonuca etkisini daha net görebilmektir.  
+>* Testler, **100** haber makalesi üzerinde gerçekleştirilmiştir. Her test için tutarlı sonuçlar elde etmek adına haber seçiminde **seed 42** belirlenmiş, **temperature 0.0** olarak ayarlanmıştır. Bu sayede modelin çıktıları tutarlı ve tekrarlanabilir olmuştur.
 
 **Token Sayımı:**
-Her sınıflandırmada kullanılan token sayıları, Gemini API’nin usage_metadata bilgisiyle ölçülmüştür. Girdi token sayısı prompt_token_count üzerinden alınmış, modelin ürettiği yanıt ise count_tokens() fonksiyonuyla analiz edilerek çıktı token sayısı hesaplanmıştır.
+Her sınıflandırmada kullanılan token sayıları, Gemini API’nin *usage_metadata* bilgisiyle ölçülmüştür. Girdi token sayısı *prompt_token_count* üzerinden alınmış, modelin ürettiği yanıt ise *count_tokens()* fonksiyonuyla analiz edilerek çıktı token sayısı hesaplanmıştır.
+
+**Metrik Hesaplama Yöntemi:**  
+Sınıflandırma sonuçlarının değerlendirilmesinde `scikit-learn` kütüphanesindeki `accuracy_score`, `precision_recall_fscore_support` ve `confusion_matrix` fonksiyonları kullanılmıştır.  
+F1 score, precision ve recall değerleri "macro average" yöntemiyle tüm sınıflar üzerinden eşit ağırlıklı olarak hesaplanmıştır.  
+Confusion matrix sonuçları da normalize edilerek görselleştirilmiştir.
+
 
 Aşağıda sunulan istemler farklı stratejilere göre tasarlanmış ve her birinden elde edilen test metrikleri classification_report.txt dosyasında detaylı haliyle sunulmuştur.
 
