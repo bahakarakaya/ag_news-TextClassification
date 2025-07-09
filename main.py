@@ -63,7 +63,6 @@ def classify_text(text):
         prompt = PROMPT_TEMPLATE.format(text=text)
 
         response = model.generate_content(contents=[prompt])
-        print(response.text)
 
         usage_metadata = response.usage_metadata
         input_token = usage_metadata.prompt_token_count
@@ -72,8 +71,6 @@ def classify_text(text):
         predicted_label_str = response.text.split('Label:')[-1].strip()
         if predicted_label_str is None or predicted_label_str == '':
             raise Exception("Error: Empty response returned from model.")
-
-        predicted_label_str
 
         return predicted_label_str, input_token, output_token
 
